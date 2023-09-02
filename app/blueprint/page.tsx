@@ -34,29 +34,7 @@ import { Progress } from "@/components/ui/progress";
 import { WORKBENCH_ABI, WORKBENCH_ADDRESS } from "../utils/abi/workbench";
 import { shortenText } from "../utils/helpers/shorten.helper";
 import { Label } from "@/components/ui/label";
-
-export const tokens = [
-  {
-    id: 1,
-    name: "Tank",
-    icon: "/icons/tank.png",
-  },
-  {
-    id: 1001,
-    name: "Shards",
-    icon: "/icons/shards.png",
-  },
-  {
-    id: 1002,
-    name: "Gears",
-    icon: "/icons/gears.png",
-  },
-  {
-    id: 1003,
-    name: "Crystals",
-    icon: "/icons/crystals.png",
-  },
-];
+import { tokens } from "../utils/tokens/core";
 
 export default function BlueprintPage() {
   const [progress, setProgress] = useState(13);

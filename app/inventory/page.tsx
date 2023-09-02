@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/card";
 import { COLLECTION_ABI, COLLECTION_ADDRESS } from "../utils/abi/collection";
 import { useAccount, useContractRead } from "wagmi";
-import { tokens } from "../mint/page";
 import ClientOnly from "../providers/client-only";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Image from "next/image";
+import { tokens } from "../utils/tokens/core";
 
 export default function InventoryPage() {
   const { address, isConnected } = useAccount();
