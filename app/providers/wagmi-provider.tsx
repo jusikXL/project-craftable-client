@@ -2,14 +2,14 @@
 
 import { ReactNode } from "react";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
-import { mantleTestnet } from "wagmi/chains";
+import { celoAlfajores, mantleTestnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mantleTestnet],
+  [mantleTestnet, celoAlfajores],
   [publicProvider()]
 );
 

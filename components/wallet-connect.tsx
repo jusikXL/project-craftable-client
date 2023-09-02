@@ -1,8 +1,8 @@
 import { Wallet } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Connector, useAccount, useConnect, useDisconnect } from "wagmi";
-import { fantom, mantleTestnet } from "wagmi/chains";
+import { Chain, Connector, useAccount, useConnect, useDisconnect } from "wagmi";
+import { celoAlfajores, fantom, mantleTestnet } from "wagmi/chains";
 import { useToast } from "./ui/use-toast";
 import {
   Dialog,
@@ -14,6 +14,15 @@ import {
 } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { shortenAddress } from "@/app/utils/helpers/shorten.helper";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const connectorsIcons: { [key: string]: any } = {
   "Coinbase Wallet": "/icons/coinbase.svg",
@@ -25,11 +34,12 @@ export default function WalletConnect() {
   const { toast } = useToast();
 
   const [open, setOpen] = useState(false);
+  const [chainId, setChainId] = useState<Chain>(mantleTestnet);
 
   const account = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect({
-      chainId: mantleTestnet.id,
+      chainId: chainId.id,
       onSuccess: () => {
         setOpen(false);
       },
@@ -51,6 +61,7 @@ export default function WalletConnect() {
   };
 
   const handleConnect = (connector: Connector) => {
+    console.log(chainId);
     if (!connector.ready) {
       toast({
         description: "This connector is not ready yet.",
@@ -99,7 +110,34 @@ export default function WalletConnect() {
           <DialogDescription>
             Please connect your wallet to continue using the app.
           </DialogDescription>
+          {/* <Button onClick={() => setChainId(celoAlfajores)} variant="default">
+            Use Celo Alfajores as a default chain
+          </Button> */}
         </DialogHeader>
+        <Select
+          defaultValue="mantle"
+          onValueChange={(value) => {
+            switch (value) {
+              case "mantle":
+                setChainId(mantleTestnet);
+                break;
+              case "celo":
+                setChainId(celoAlfajores);
+                break;
+            }
+          }}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select a chain" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Chains</SelectLabel>
+              <SelectItem value="mantle">Mantle Testnet</SelectItem>
+              <SelectItem value="celo">Celo Alfajores</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
         <div className="flex flex-col space-y-2">
           {connectors.map((connector) => {
             const iconPath = connectorsIcons[connector.name];
