@@ -62,8 +62,6 @@ export default function WalletConnect() {
     connect({ connector });
   };
 
-  console.log(connectors.length);
-
   if (account.isConnected && account.address) {
     return (
       <Dialog onOpenChange={setOpen} open={open}>

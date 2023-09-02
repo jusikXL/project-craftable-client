@@ -3,6 +3,7 @@
 import NavLink from "@/components/nav-link";
 import { ThemeToggle } from "@/components/theme";
 import WalletConnect from "@/components/wallet-connect";
+import ClientOnly from "./providers/client-only";
 
 export default function Header() {
   return (
@@ -22,7 +23,9 @@ export default function Header() {
             <NavLink href="/craft">04 Craft</NavLink>
           </li>
           <li>
-            <WalletConnect />
+            <ClientOnly>
+              <WalletConnect />
+            </ClientOnly>
           </li>
           <li>
             <ThemeToggle />
