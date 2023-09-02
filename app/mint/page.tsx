@@ -181,7 +181,7 @@ export default function MintPage() {
                   !isConnected || !form.formState.isValid || mint.isLoading
                 }
               >
-                Submit
+                Mint
               </Button>
               <Progress value={progress} />
             </div>
