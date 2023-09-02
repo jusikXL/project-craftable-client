@@ -23,10 +23,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <WagmiProvider>
-            <div className="p-4 md:p-24">
-              <Header />
-              {children}
-              <Toaster />
+            <div className="p-4 md:p-24 flex justify-center">
+              <div>
+                <Header />
+                <div className="flex justify-center">{children}</div>
+                <Toaster />
+              </div>
             </div>
           </WagmiProvider>
         </ThemeProvider>
