@@ -123,7 +123,7 @@ export default function BlueprintPage() {
   }, [isError, toast, createBlueprint.isError]);
 
   return (
-    <Card className="w-[350px]">
+    <Card className="max-w-[350px]">
       <CardHeader>
         <CardTitle>Create Blueprint</CardTitle>
         <CardDescription>

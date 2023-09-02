@@ -28,7 +28,7 @@ export default function InventoryPage() {
   });
 
   return (
-    <Card className="w-[350px]">
+    <Card className="max-w-[350px]">
       <CardHeader>
         <CardTitle>Inventory</CardTitle>
         <CardDescription>Find your minted tokens here.</CardDescription>

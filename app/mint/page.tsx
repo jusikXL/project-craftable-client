@@ -91,7 +91,7 @@ export default function MintPage() {
   }, [isError, toast, mint.isError]);
 
   return (
-    <Card className="w-[350px]">
+    <Card className="max-w-[350px]">
       <CardHeader>
         <CardTitle>Mint Token</CardTitle>
         <CardDescription>

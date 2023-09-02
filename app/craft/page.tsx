@@ -151,7 +151,7 @@ export default function CraftPage() {
   }, [toast, approve.isError, isApprovalError]);
 
   return (
-    <Card className="w-[350px]">
+    <Card className="max-w-[350px]">
       <CardHeader>
         <CardTitle>Craft</CardTitle>
         <CardDescription>
