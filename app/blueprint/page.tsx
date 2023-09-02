@@ -116,12 +116,20 @@ export default function BlueprintPage() {
       toast({
         title: "Your transaction was successful.",
       });
+
       const blueprintId = BigInt(transaction?.logs[0].data as string);
       setBlueprintId(blueprintId);
-      window.localStorage.setItem(
-        `blueprintId`,
-        JSON.stringify(blueprintId.toString())
+
+      const storedBlueprintIds = JSON.parse(
+        window.localStorage.getItem("blueprintIds") || "[]"
       );
+      storedBlueprintIds.push(blueprintId.toString());
+
+      window.localStorage.setItem(
+        "blueprintIds",
+        JSON.stringify(storedBlueprintIds)
+      );
+
       setTimeout(() => setProgress(0), 1000);
     }
   }, [isSuccess, toast, transaction]);
