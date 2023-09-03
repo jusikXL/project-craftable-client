@@ -29,3 +29,7 @@ They follow best practices for developing smart contracts:
 - abstracts
 - security verified by slither
 - full coverage of unit and integration tests.
+
+
+The project is built on top of Mantle Testnet and Celo Alfajores and supports both chains.
+
